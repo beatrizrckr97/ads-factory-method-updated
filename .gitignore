@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtualenv
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# Django
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+static_root/
+
+# Environment variables
+.env.local
+.env.*.local
+*.env
+.envrc
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Pytest / Coverage / MyPy
+.coverage
+htmlcov/
+.pytest_cache/
+mypy_cache/
+.cache/
+.tox/
+nosetests.xml
+coverage.xml
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.orig
