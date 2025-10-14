@@ -24,5 +24,6 @@ Descrição...
     Rodar o servidor
 8 - python manage.py runserver
 
+```
 ## Telas
 <img width="1022" height="744" alt="image" src="https://github.com/user-attachments/assets/ab9edffe-8d01-4f9d-98b9-36fbb086dd91" />
