@@ -1,0 +1,29 @@
+{% extends "home.html" %}
+
+{% block content %}
+
+    <canvas id="transactionsChart"></canvas>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('transactionsChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: {{ content.labels|safe }},
+                    datasets: [{
+                        label: 'Total por Mês',
+                        data: {{ content.values|safe }},
+                        backgroundColor: 'rgba(0,123,255,0.5)',
+                        borderColor: 'rgba(0,123,255,1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+        });
+    </script>
+
+{% endblock %}
