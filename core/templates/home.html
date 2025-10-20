@@ -10,6 +10,8 @@
     <h1>Painel de Relatórios</h1>
     <p>Escolha um relatório:</p>
     <a class="button" href="{% url 'generate_report' 'transactions' %}">Relatório de Transações</a>
+    <a class="button" href="{% url 'generate_report' 'sales' %}">Relatório de Vendas</a>
+    <a class="button" href="{% url 'generate_report' 'clients' %}">Relatório de Clientes</a>
     <div class="report-content">
         {% block content %}{% endblock %}
     </div>
