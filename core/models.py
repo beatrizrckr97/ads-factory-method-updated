@@ -15,3 +15,13 @@ class Sale(models.Model):
 
     def __str__(self):
         return f"{self.product_name} - {self.date}"
+    
+
+class Client(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+

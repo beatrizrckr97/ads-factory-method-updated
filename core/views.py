@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.utils import timezone
 from django.db.models import Sum, F, FloatField
 from .factories import ReportFactory
-from .models import Sale
 import calendar
+
+# Importa seus modelos
+from .models import Sale
 
 def home(request):
     return render(request, 'home.html')
@@ -14,15 +16,22 @@ def generate_report(request, report_type):
     report = factory.create_report(report_type)
     data = report.generate()
 
-    total_vendas = sum(data['values']) if data['values'] else 0
+    # Calcula totais e médias
+    total = sum(data['values']) if data['values'] else 0
     meses_registrados = len(data['labels']) if data['labels'] else 0
-    media_mensal = total_vendas / meses_registrados if meses_registrados > 0 else 0
+    media_mensal = total / meses_registrados if meses_registrados > 0 else 0
+
+    
+    if report_type == "clients":
+        total_key = 'total_clients'
+    else:
+        total_key = 'total_vendas'
 
     context = {
         'content': data,
         'report_type': report_type,
         'last_updated': timezone.now(),
-        'total_vendas': total_vendas,
+        total_key: total,
         'meses_registrados': meses_registrados,
         'media_mensal': media_mensal,
         'zipped_data': list(zip(data['labels'], data['values'])),
@@ -65,4 +74,4 @@ def sales_dashboard_view(request):
         'last_updated': timezone.now()
     }
 
-    return render(request, 'sales_dashboard.html', context)
+    return render(request, 'sales.html', context)
