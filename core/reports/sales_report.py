@@ -1,3 +1,4 @@
+from core.reports.base_report import BaseReport
 from core.models import Sale
 from django.db.models import Sum, F, FloatField
 import calendar

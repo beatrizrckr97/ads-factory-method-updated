@@ -5,16 +5,80 @@
     <title>Bem-vindo</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #4e73df;
+            color: white;
+            padding: 12px 25px;
+            margin: 8px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .button:hover {
+            background-color: #2e59d9;
+            transform: scale(1.05);
+        }
+
+        .section {
+            margin-top: 40px;
+        }
+
+        .report-content {
+            margin-top: 30px;
+        }
+
+        footer {
+            margin-top: 60px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
     <h1>Painel de Relatórios</h1>
+
     <p>Escolha um relatório:</p>
     <a class="button" href="{% url 'generate_report' 'transactions' %}">Relatório de Transações</a>
     <a class="button" href="{% url 'generate_report' 'sales' %}">Relatório de Vendas</a>
     <a class="button" href="{% url 'generate_report' 'clients' %}">Relatório de Clientes</a>
+
+    <div class="section">
+        <h2>Cadastros</h2>
+        <a class="button" href="{% url 'add_client' %}">Cadastrar Cliente</a>
+        <a class="button" href="{% url 'add_sale' %}">Cadastrar Venda</a>
+        <a class="button" href="{% url 'add_transaction' %}">Cadastrar Transação</a>
+    </div>
+
     <div class="report-content">
         {% block content %}{% endblock %}
     </div>
+
+    <footer>
+        <p>© {{ now|date:"Y" }} • Sistema de Relatórios</p>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
