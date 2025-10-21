@@ -3,7 +3,7 @@ from django.db.models import Sum, F, FloatField
 import calendar
 from django.utils import timezone
 
-class SalesReport:
+class SalesReport(BaseReport):
     def generate(self):
         ano_atual = timezone.now().year
         vendas_ano = Sale.objects.filter(date__year=ano_atual)
